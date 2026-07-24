@@ -34,7 +34,7 @@
 :root {
   --void:         #08080A;
   --carbon:       #141412;
-  --concrete:     #FFFFFF;
+  --concrete:     #EBE8E3;
   --stone:        #EAE5DC;
   --sand:         #D8D2C8;
   --iron:         #7A7874;
@@ -156,6 +156,10 @@ body.loaded .intro {
   transform: translateY(-50px) translateZ(-50px);
   opacity: 0;
   animation: dropIn 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) 4.5s forwards;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 .hero h1 {
   font-family: var(--font-display);
@@ -174,7 +178,7 @@ body.loaded .intro {
   color: var(--carbon);
 }
 .hero-line {
-  width: 0; height: 1px;
+  width: 0; height: 4px;
   background: var(--amber);
   margin-top: 2rem;
   animation: drawLine 1.5s ease 5.5s forwards;
@@ -224,7 +228,7 @@ body.loaded .intro {
   font-size: 4rem;
   font-weight: 600;
   letter-spacing: -0.02em;
-  color: var(--iron);
+  color: var(--void);
   line-height: 1;
 }
 .stat-label {
@@ -233,6 +237,32 @@ body.loaded .intro {
   color: var(--carbon);
   letter-spacing: 0.04em;
   line-height: 1.4;
+}
+
+/* ============================================================
+   SERVICES
+   ============================================================ */
+.services {
+  padding: 10rem 2.5rem;
+  background: var(--concrete);
+  border-top: 1px solid var(--sand);
+}
+.services-inner {
+  display: grid; grid-template-columns: 300px 1fr; gap: 4rem; max-width: 1200px; margin: 0 auto;
+}
+.services-list {
+  list-style: none; padding: 0; margin: 0;
+}
+.services-list li {
+  display: flex; gap: 2rem; border-bottom: 1px solid var(--sand);
+  padding: 2.5rem 0; font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 4rem); text-transform: uppercase;
+  color: var(--carbon); align-items: baseline; letter-spacing: -0.02em;
+}
+.services-list li:first-child { padding-top: 0; }
+.services-list li:last-child { border-bottom: none; padding-bottom: 0; }
+.srv-num {
+  font-family: var(--font-body); font-size: 1rem; color: var(--iron); letter-spacing: normal; font-weight: normal;
 }
 
 /* ============================================================
@@ -457,8 +487,10 @@ body.loaded .intro {
 @media (max-width: 768px) {
   .nav { padding: 1.5rem; }
   .hero { padding: 0 1.5rem; }
-  .about, .work, .testimonial, .faq, .footer { padding-left: 1.5rem; padding-right: 1.5rem; }
+  .about, .services, .work, .testimonial, .faq, .footer { padding-left: 1.5rem; padding-right: 1.5rem; }
   .stats-grid { grid-template-columns: 1fr; }
+  .services-inner { grid-template-columns: 1fr; gap: 3rem; }
+  .services-list li { flex-direction: column; gap: 0.5rem; }
   .chat-submit { position: static; margin-top: 1.5rem; }
   .footer-details { grid-template-columns: 1fr; gap: 3rem; }
   .footer-social { justify-content: flex-start; flex-wrap: wrap; }
