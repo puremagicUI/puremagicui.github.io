@@ -190,7 +190,7 @@ body.loaded .intro {
    ABOUT & STATS
    ============================================================ */
 .about {
-  padding: 10rem 2.5rem;
+  padding: 15rem 2.5rem;
   background: var(--concrete);
 }
 .about-inner {
@@ -243,7 +243,7 @@ body.loaded .intro {
    SERVICES
    ============================================================ */
 .services {
-  padding: 10rem 2.5rem;
+  padding: 15rem 2.5rem;
   background: var(--concrete);
   border-top: 1px solid var(--sand);
 }
@@ -269,7 +269,7 @@ body.loaded .intro {
    SELECTED WORK
    ============================================================ */
 .work {
-  padding: 10rem 2.5rem;
+  padding: 15rem 2.5rem;
   background: var(--concrete);
 }
 .work-header {
@@ -328,14 +328,22 @@ body.loaded .intro {
   padding: 10rem 2.5rem;
   text-align: center;
   display: flex; flex-direction: column; align-items: center; justify-content: center;
+  min-height: 100vh;
 }
 .testimonial-quote {
   font-family: var(--font-serif);
   font-style: italic;
-  font-size: clamp(1.2rem, 3.5vw, 2.5rem);
-  line-height: 1.4;
-  max-width: 900px;
-  margin-bottom: 3rem;
+  font-size: clamp(1.5rem, 3.8vw, 3rem);
+  line-height: 1.45;
+  max-width: 1000px;
+  margin-bottom: 4rem;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1.2s ease, transform 1.2s var(--ease);
+}
+.testimonial-quote.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 .testimonial-author {
   font-family: var(--font-body);
@@ -343,6 +351,13 @@ body.loaded .intro {
   font-weight: 500;
   color: var(--amber);
   margin-bottom: 0.5rem;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease 0.4s, transform 1s var(--ease) 0.4s;
+}
+.testimonial-author.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 .testimonial-role {
   font-family: var(--font-body);
@@ -350,6 +365,13 @@ body.loaded .intro {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: rgba(255,255,255,0.4);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease 0.6s, transform 1s var(--ease) 0.6s;
+}
+.testimonial-role.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* ============================================================
@@ -357,7 +379,7 @@ body.loaded .intro {
    ============================================================ */
 .faq {
   background: var(--concrete);
-  padding: 10rem 2.5rem;
+  padding: 15rem 2.5rem;
 }
 .faq-inner {
   display: grid; grid-template-columns: 300px 1fr; gap: 4rem; max-width: 1200px; margin: 0 auto;

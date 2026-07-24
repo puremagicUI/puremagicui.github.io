@@ -89,6 +89,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
   reveals.forEach(reveal => revealObserver.observe(reveal));
 
+  // 4b. Staggered Testimonial Reveal
+  const testimonialEls = document.querySelectorAll('.testimonial-quote, .testimonial-author, .testimonial-role');
+  const testimonialObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+
+  testimonialEls.forEach(el => testimonialObserver.observe(el));
+
+  // 4c. Magnetic Button Effect
+  const magneticEls = document.querySelectorAll('.chat-submit, .faq-btn, #menuBtn');
+  magneticEls.forEach(el => {
+    el.addEventListener('mousemove', (e) => {
+      const rect = el.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      el.style.transform = `translate(${x * 0.25}px, ${y * 0.25}px)`;
+      el.style.transition = 'transform 0.1s ease';
+    });
+    el.addEventListener('mouseleave', () => {
+      el.style.transform = 'translate(0, 0)';
+      el.style.transition = 'transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+    });
+  });
+
   // 5. Stat Numbers Counter
   const stats = document.querySelectorAll('.stat-num');
   const statObserver = new IntersectionObserver((entries, observer) => {
