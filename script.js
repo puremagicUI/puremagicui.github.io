@@ -169,6 +169,28 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // 6b. Footer Pills Multi-Select
+  const footerPills = document.querySelectorAll('.footer-pills .pill');
+  const selectedServicesInput = document.getElementById('selectedServices');
+  let selectedPills = [];
+
+  footerPills.forEach(pill => {
+    pill.addEventListener('click', (e) => {
+      e.preventDefault();
+      const val = pill.getAttribute('data-value');
+      
+      if (pill.classList.contains('selected')) {
+        pill.classList.remove('selected');
+        selectedPills = selectedPills.filter(v => v !== val);
+      } else {
+        pill.classList.add('selected');
+        selectedPills.push(val);
+      }
+      
+      selectedServicesInput.value = selectedPills.join(', ');
+    });
+  });
+
   // 7. Formspree AJAX Submission
   const chatForm = document.getElementById('chatForm');
   if (chatForm) {
@@ -193,9 +215,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         if (response.ok) {
+          const pillsContainer = chatForm.querySelector('.footer-pills');
+          if (pillsContainer) pillsContainer.style.display = 'none';
           input.style.display = 'none';
           submitBtn.style.display = 'none';
-          successMsg.style.display = 'block';
+          successMsg.style.display = 'flex';
         } else {
           submitBtn.style.opacity = '1';
           submitBtn.innerText = 'Error. Try Again.';
