@@ -189,14 +189,15 @@ ul, dl { list-style: none; margin: 0; padding: 0; }
 .hero-label {
   position: absolute;
   top: 3.5%;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
+  width: 100%;
+  text-align: center;
   font-family: var(--font-body);
   font-size: 0.65rem;
   letter-spacing: 0.25em;
   text-transform: uppercase;
   color: var(--iron);
-  margin-bottom: 3rem;
+  margin-bottom: 16pt;
   opacity: 0;
   transform: translateY(10px);
   animation: heroFadeUp 0.8s ease 0.2s forwards;
@@ -209,6 +210,7 @@ ul, dl { list-style: none; margin: 0; padding: 0; }
   align-items: center;
   gap: 0;
   will-change: transform;
+  margin-top: 16pt;
 }
 
 .hero-word-row {
@@ -811,10 +813,12 @@ ul, dl { list-style: none; margin: 0; padding: 0; }
   .hero-sub p { font-size: 0.95rem; }
   .hero-label {
     top: 4%;
-    left: 50%;
-    transform: translateX(-50%);
-    margin-bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 16pt;
   }
+  .hero-words { margin-top: 16pt; }
   .hero-corner-note {
     right: 1.5rem;
     bottom: 1.5rem;
